@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Litinova | Toko Buku Digital</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Inter:wght@400;500&display=swap" rel="stylesheet">
+
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
+
+  <!-- Bootstrap 5 -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- AOS CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+
+  <style>
+body {
+  font-family: 'Inter', sans-serif;
+  background: linear-gradient(-45deg, 
+  #E8EAF6,  /* Ice blue */
+  #FCE4EC,  /* Bubblegum pink */
+  #E0F7FA,  /* Arctic blue */
+  #F3E5F5   /* Lilac */
+);
+  background-size: 400% 400%;
+  background-position: 0% 50%;
+  animation: gradientFlow 10s ease infinite;
+}
+
+.navbar {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  padding: 12px 0;
+  background-color: #ffffff;
+  transition: all 0.3s ease;
+  z-index: 1000;
+  border-radius: 0px 0px 40px 40px;
+}
+
+.navbar-brand img {
+  height: 40px;
+  margin-right: 10px;
+  border-radius: 8px;
+}
+
+.navbar-nav .nav-link {
+  margin-left: 20px;
+  font-weight: 500;
+  color: #374151 !important;
+}
+
+.hero {
+  background-size: 400% 400%;
+  color: #111827;
+  padding: 100px 0;
+  text-align: center;
+  margin-top: -50px;
+  margin-bottom: -50px;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  margin-bottom: 15px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  color: #374151;
+}
+
+.btn-outline-primary {
+  border-radius: 30px;
+  padding: 10px 30px;
+}
+
+#katalog {
+  background-color: #f9fafb;
+  padding: 60px 10px;
+}
+
+#katalog h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  color: lch(35.88% 26.14 272.14);
+  padding-bottom: 10px;
+  padding-top: 10px;
+  border-radius: 8px; 
+  font-weight: bolder;
+}
+
+.book-card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  border-radius: 10px;
+  width: 100%;
+}
+
+.book-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+.book-card img {
+  height: 100%;
+  object-fit: cover;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.card-body {
+  border-top: 1px solid #eee;
+}
+
+footer {
+  background-color: #111827;
+  color: white;
+  padding: 25px 0;
+  text-align: center;
+  margin-top: 60px;
+}
+
+@keyframes gradientFlow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .hero h1 {
+    font-size: 2.2rem;
+  }
+
+  .navbar-nav .nav-link {
+    margin-left: 0;
+  }
+
+  .book-card .card-title {
+    font-size: 1.2rem !important;
+  }
+
+  .book-card .card-text {
+    font-size: 0.9rem !important;
+    max-height: 3.6em !important;
+    overflow: hidden !important;
+    display: -webkit-box !important;
+    -webkit-line-clamp: 2 !important;
+    -webkit-box-orient: vertical !important;
+  }
+  
+  /* Fix for mobile alignment issues */
+  #katalog h2, .line {
+    margin-right: 0 !important;
+    text-align: center;
+  }
+}
+
+/* Katalog Image Full Height */
+.card-img-top {
+  height: 250px;
+  object-fit: cover;
+}
+
+/* Tombol di Card Tidak Bergeser */
+.book-card .card-body {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+}
+
+.book-card .btn {
+  margin-top: auto;
+}
+
+.content {
+  background-color: #ffffff;
+  border-radius: 40px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  margin: 20px;
+  justify-content: center;
+  align-items: center;
+}
+
+.line {
+  height: 2px;
+  background-color: lch(35.88% 26.14 272.14);
+  margin: 20px auto;
+  margin-bottom: 50px;
+  max-width: 85%;
+}
+
+/* Global Styling */
+body {
+  font-family: 'Playfair Display', serif;
+  color: #333;
+  background-color: #fdfdfd;
+}
+
+/* Section Heading */
+h2 {
+  font-size: 2.5rem;
+  font-weight: bold;
+  color: hsl(214, 100%, 35%);
+  margin-bottom: 1.5rem;
+}
+
+/* Feature Section */
+#fitur {
+  background: linear-gradient(135deg, #f3f4f6, #ffffff);
+  padding: 60px 20px;
+  box-shadow: 0 -4px 10px rgba(0, 0, 0, 0.116); /* Shadow lebih kecil */
+  border-radius: 40px 40px 0 0;
+}
+
+.feature-box {
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 -8px 20px rgba(0, 0, 0, 0.1); /* Shadow hanya di atas */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.feature-box h5 {
+  font-size: 1.3rem;
+  font-weight: bold;
+  color: hsl(214, 100%, 35%);
+  margin-top: 1rem;
+}
+
+.feature-box:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 -10px 20px rgba(0, 0, 0, 0.1); /* Shadow hanya di atas saat hover */
+}
+
+/* Carousel Section */
+#carousel {
+  background:linear-gradient(135deg, #ffffff, #f3f4f6) ;
+  padding: 60px 20px;
+  overflow: hidden;
+  border: 5px solid hwb(214 42% 9%);
+  border-radius: 40px;
+}
+
+.carousel-inner {
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.carousel-item img {
+  object-fit: cover;
+  height: 300px;
+}
+
+.carousel-item h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  color: #111827;
+  font-weight: bold;
+}
+
+.carousel-item p {
+  color: #374151;
+  font-size: 1.1rem;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  background-color: rgba(18, 92, 165, 0.5);
+  border-radius: 30%;
+  width: 40px;
+  height: 40px;
+  border: none;
+}
+
+.carousel-control-prev-icon::before {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.carousel-control-next-icon::before {
+  font-family: 'Font Awesome 5 Free';
+  font-weight: 900;
+  font-size: 1.5rem;
+  color: #fff;
+}
+
+.btn-outline-primary {
+  background-color: transparent;
+  border-color: hsl(214, 100%, 66%);
+  color: hsl(214, 100%, 40%);
+  border-width: 2px;
+  font-size: 0.9rem;
+  padding: 0.6rem 1.2rem;
+}
+
+.btn-outline-primary:hover {
+  background-color: hsl(214, 100%, 66%);
+  color: white;
+}
+
+/* Testimonial Section */
+#testimoni {
+  background: linear-gradient(135deg, #f3f4f6, #ffffff);
+  padding: 60px 20px;
+  border-radius: -40px;
+  margin-bottom: 100px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1); /* Shadow bagian bawah */
+}
+
+.testimonial-card {
+  background-color: #f9fafb;
+  border-radius: 20px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.testimonial-card p {
+  font-style: italic;
+  font-size: 1rem;
+  color: #555;
+  margin-bottom: 1rem;
+}
+
+.testimonial-card h6 {
+  font-size: 1rem;
+  font-weight: bold;
+  color: hsl(214, 100%, 40%);
+}
+
+.testimonial-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+}
+
+/* Row Spacing */
+.row.g-4 {
+  gap: 2rem;
+}
+.team-photo {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+    margin-bottom: 1rem;
+}
+.team-icon {
+    width: 50px;
+    height: 50px;
+}
+* {
+  transition: all 0.3s ease-in-out;
+}
+  </style>
+</head>
+<body>
+<!-- Navbar -->
+<nav id="beranda" class="navbar navbar-expand-lg navbar-light bg-white sticky-top">
+  <div class="container">
+    <a class="navbar-brand d-flex align-items-center" href="#">
+      <img src="img/Logo2.png" alt="Litinova Logo">
+      <span class="fw-bold fs-5">Litinova</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navMenu">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navMenu">
+      <ul class="navbar-nav ms-auto">
+        <li class="nav-item"><a class="nav-link" href="#Beranda">Beranda</a></li>
+        <li class="nav-item"><a class="nav-link" href="#Katalog">Katalog</a></li>
+        <li class="nav-item"><a class="nav-link" href="#About">Tentang</a></li>
+        <li class="nav-item"><a class="nav-link" href="#Kontak">Kontak</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<!-- Hero -->
+<section id="Beranda" class="hero">
+  <div class="container" data-aos="fade-up" data-aos-duration="1000">
+    <h1>Litinova: Buku Digital yang Kamu Cinta</h1>
+    <p>Temukan puisi, zine, dan karya tulis penuh makna. Bayar suka-suka, dukung karya indie!</p>
+    <a href="#Katalog" class="btn btn-outline-primary mt-4" data-aos="fade-up" data-aos-delay="200">Jelajahi Katalog</a>
+  </div>
+</section>
+
+<!-- Beranda -->
+<!-- Fitur Utama -->
+<section id="fitur" class="py-5 bg-light">
+  <div class="container text-center">
+    <h2 data-aos="fade-up" class="mb-4">Kenapa Pilih Litinova?</h2>
+    <div class="row g-5">
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+        <div class="feature-box p-4 shadow-sm rounded">
+          <img src="img/acc.gif" alt="Akses Mudah" class="mb-3" style="width: 60px;">
+          <h5>Akses Mudah</h5>
+          <p>Baca buku kapan saja dan di mana saja dengan mudah melalui platform digital kami.</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+        <div class="feature-box p-4 shadow-sm rounded">
+          <img src="img/ide.gif" alt="Karya Unik" class="mb-3" style="width: 60px;">
+          <h5>Karya Unik</h5>
+          <p>Temukan karya indie eksklusif dari penulis berbakat di seluruh Indonesia.</p>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+        <div class="feature-box p-4 shadow-sm rounded">
+          <img src="img/pay.gif" alt="Bayar Fleksibel" class="mb-3" style="width: 60px;">
+          <h5>Bayar Suka-Suka</h5>
+          <p>Model pembayaran fleksibel untuk mendukung penulis favorit Anda.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Carousel -->
+<section id="carousel" class="py-5">
+  <div class="container" data-aos="fade-in">
+    <div id="litinovaCarousel" class="carousel slide shadow rounded" data-bs-ride="carousel">
+      <div class="carousel-inner">
+        <!-- Slide 1 -->
+        <div class="carousel-item active">
+          <div class="row align-items-center">
+            <div class="col-md-6" data-aos="fade-right" data-aos-delay="100">
+              <img src="img/TeoriKritis.jpg" class="d-block w-100 rounded" alt="Teori Kritis">
+            </div>
+            <div class="col-md-6 text-center text-md-start" data-aos="fade-left" data-aos-delay="200">
+              <h3 class="mb-3">Teori Kritis</h3>
+              <p>Eksplorasi mendalam tentang teori kritis dalam konteks sosial dan budaya modern.</p>
+              <a href="#" class="btn btn-outline-primary mt-3">Baca Sekarang</a>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="carousel-item">
+          <div class="row align-items-center">
+            <div class="col-md-6" data-aos="fade-right" data-aos-delay="100">
+              <img src="img/MelihatApiBekerja.jpg" class="d-block w-100 rounded" alt="Melihat Api Bekerja">
+            </div>
+            <div class="col-md-6 text-center text-md-start" data-aos="fade-left" data-aos-delay="200">
+              <h3 class="mb-3">Melihat Api Bekerja</h3>
+              <p>Antologi puisi modern yang menyoroti kehidupan dan perjuangan sehari-hari.</p>
+              <a href="#" class="btn btn-outline-primary mt-3">Jelajahi Karya</a>
+            </div>
+          </div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="carousel-item">
+          <div class="row align-items-center">
+            <div class="col-md-6" data-aos="fade-right" data-aos-delay="100">
+              <img src="img/FilosofiTeras.jpg" class="d-block w-100 rounded" alt="Filosofi Teras">
+            </div>
+            <div class="col-md-6 text-center text-md-start" data-aos="fade-left" data-aos-delay="200">
+              <h3 class="mb-3">Filosofi Teras</h3>
+              <p>Panduan hidup damai dengan adaptasi filosofi Stoikisme yang sederhana dan aplikatif.</p>
+              <a href="#" class="btn btn-outline-primary mt-3">Baca Sekarang</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="carousel-control-prev" type="button" data-bs-target="#litinovaCarousel" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+      </button>
+      <button class="carousel-control-next" type="button" data-bs-target="#litinovaCarousel" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+      </button>
+    </div>
+  </div>
+</section>
+
+<!-- Testimoni -->
+<section id="testimoni" class="py-5">
+  <div data-aos="fade-up" class="container">
+    <h2 class="text-center mb-5">Apa Kata Mereka?</h2>
+    <div class="row g-5">
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="100">
+        <div class="testimonial-card p-4 text-center shadow-sm rounded">
+          <p>"Platform ini benar-benar mempermudah saya untuk menemukan karya unik yang inspiratif!"</p>
+          <h6>- Maya, Pembaca</h6>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="200">
+        <div class="testimonial-card p-4 text-center shadow-sm rounded">
+          <p>"Sebagai penulis, saya merasa didukung dan dihargai oleh komunitas di Litinova."</p>
+          <h6>- Budi, Penulis</h6>
+        </div>
+      </div>
+      <div class="col-md-4" data-aos="zoom-in" data-aos-delay="300">
+        <div class="testimonial-card p-4 text-center shadow-sm rounded">
+          <p>"Saya suka model bayar suka-suka ini, fleksibel dan mendukung karya lokal."</p>
+          <h6>- Sari, Pembaca</h6>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div id="Katalog" class="content">
+<!-- Katalog -->
+<section>
+  <div class="container">
+    <br>
+    <h2 class="text-center mb-5" style="font-family: 'Segoe';" data-aos="fade-up">Katalog Buku</h2>
+    <div class="line" data-aos="fade-up"></div>
+    <div class="row g-5">
+
+      <!-- Buku 1 -->
+      <div class="col-md-4" data-aos="flip-left" data-aos-delay="100">
+        <div class="card book-card h-100 border-0 shadow-sm">
+          <img src="img/TeoriKritis.jpg" class="card-img-top" alt="Teori Kritis">
+          <div class="card-body">
+            <h5 class="card-title">Teori Kritis</h5>
+            <p class="card-text">Sebuah eksplorasi mendalam tentang teori kritis dalam konteks sosial dan budaya modern.</p>
+            <ul>
+              <li>Genre: Non-fiksi</li>
+              <li>Penulis: John Doe</li>
+              <li>Harga: Pay-what-you-want</li>
+            </ul>
+            <a href="#" class="btn btn-outline-primary w-100">Baca / Donasi</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Buku 2 -->
+      <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
+        <div class="card book-card h-100 border-0 shadow-sm">
+          <img src="img/SeniNego.jpg" class="card-img-top" alt="Seni Negosiasi">
+          <div class="card-body">
+            <h5 class="card-title">Seni Negosiasi</h5>
+            <p class="card-text">Panduan mendalam untuk menguasai seni negosiasi dalam berbagai situasi kehidupan.</p>
+            <ul>
+              <li>Genre: Non-fiksi</li>
+              <li>Penulis: Diana Kartika</li>
+              <li>Harga: Pay-what-you-want</li>
+            </ul>
+            <a href="#" class="btn btn-outline-primary w-100">Baca / Donasi</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Buku 3 -->
+      <div class="col-md-4" data-aos="flip-left" data-aos-delay="300">
+        <div class="card book-card h-100 border-0 shadow-sm">
+          <img src="img/MelihatApiBekerja.jpg" class="card-img-top" alt="Melihat Api Bekerja">
+          <div class="card-body">
+            <h5 class="card-title">Melihat Api Bekerja</h5>
+            <p class="card-text">Sebuah antologi puisi modern yang menyoroti kehidupan dan perjuangan sehari-hari.</p>
+            <ul>
+              <li>Genre: Puisi</li>
+              <li>Penulis: Ahmad Tohari</li>
+              <li>Harga: Pay-what-you-want</li>
+            </ul>
+            <a href="#" class="btn btn-outline-primary w-100">Baca / Donasi</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Buku 4 -->
+      <div class="col-md-4" data-aos="flip-left" data-aos-delay="100">
+        <div class="card book-card h-100 border-0 shadow-sm">
+          <img src="img/FilosofiTeras.jpg" class="card-img-top" alt="Filosofi Teras">
+          <div class="card-body">
+            <h5 class="card-title">Filosofi Teras</h5>
+            <p class="card-text">Panduan sederhana untuk hidup damai dengan mengadaptasi filosofi Stoikisme.</p>
+            <ul>
+              <li>Genre: Non-fiksi</li>
+              <li>Penulis: Henry Manampiring</li>
+              <li>Harga: Pay-what-you-want</li>
+            </ul>
+            <a href="#" class="btn btn-outline-primary w-100">Baca / Donasi</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Buku 5 -->
+      <div class="col-md-4" data-aos="flip-left" data-aos-delay="200">
+        <div class="card book-card h-100 border-0 shadow-sm">
+          <img src="img/NyalaYangTakPernahPadam.jpg" class="card-img-top" alt="Nyala Yang Tak Pernah Padam">
+          <div class="card-body">
+            <h5 class="card-title">Nyala Yang Tak Pernah Padam</h5>
+            <p class="card-text">Cerita inspiratif tentang semangat yang tak pernah padam dalam menghadapi hidup.</p>
+            <ul>
+              <li>Genre: Fiksi</li>
+              <li>Penulis: Rani Wulandari</li>
+              <li>Harga: Pay-what-you-want</li>
+            </ul>
+            <a href="#" class="btn btn-outline-primary w-100">Baca / Donasi</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Buku 6 -->
+      <div class="col-md-4" data-aos="flip-left" data-aos-delay="300">
+        <div class="card book-card h-100 border-0 shadow-sm">
+          <img src="img/Komunikasi jiwa.jpg" class="card-img-top" alt="Komunikasi Jiwa">
+          <div class="card-body">
+            <h5 class="card-title">Komunikasi Jiwa</h5>
+            <p class="card-text">Kumpulan esai dan puisi yang mengeksplorasi koneksi antar manusia.</p>
+            <ul>
+              <li>Genre: Esai & Puisi</li>
+              <li>Penulis: Sinta Maharani</li>
+              <li>Harga: Pay-what-you-want</li>
+            </ul>
+            <a href="#" class="btn btn-outline-primary w-100">Baca / Donasi</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+</div>
+
+<!-- Tentang -->
+<section id="About" class="py-5" style="background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up">
+      <h2 class="display-4 fw-bold mb-3" style="color: #2c3e50;">Tentang Litinova</h2>
+      <div class="divider mx-auto" style="width: 80px; height: 4px; background: linear-gradient(90deg, #3498db 0%, #9b59b6 100%);"></div>
+    </div>
+
+    <div class="row align-items-center mb-5">
+      <div class="col-lg-6 mb-4 mb-lg-0" data-aos="fade-right" data-aos-delay="100">
+        <div class="about-img p-4 shadow-lg rounded-3" style="background: white;">
+          <img src="https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" 
+               alt="Digital Reading" class="img-fluid rounded-3" style="border: 1px solid rgba(0,0,0,0.1);">
+        </div>
+      </div>
+      <div class="col-lg-6" data-aos="fade-left" data-aos-delay="200">
+        <h3 class="fw-bold mb-4" style="color: #2c3e50;">Revolusi Literasi Digital</h3>
+        <p class="lead mb-4" style="color: #7f8c8d;">
+          Litinova hadir sebagai platform inovatif yang menghubungkan pembaca dengan karya-karya digital berkualitas. 
+          Kami percaya setiap tulisan berhak mendapatkan apresiasi, dan setiap pembaca berhak mengakses pengetahuan 
+          dengan cara yang modern dan terjangkau.
+        </p>
+        <div class="d-flex align-items-center mb-3" data-aos="fade-up" data-aos-delay="300">
+          <div class="icon-box me-3" style="width: 50px; height: 50px; background: #e3f2fd; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+            <i class="bi bi-book" style="font-size: 1.5rem; color: #3498db;"></i>
+          </div>
+          <p class="mb-0" style="color: #34495e;">+500 judul buku digital dari berbagai genre</p>
+        </div>
+        <div class="d-flex align-items-center mb-3" data-aos="fade-up" data-aos-delay="400">
+          <div class="icon-box me-3" style="width: 50px; height: 50px; background: #f3e5f5; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+            <i class="bi bi-pen" style="font-size: 1.5rem; color: #9b59b6;"></i>
+          </div>
+          <p class="mb-0" style="color: #34495e;">+200 penulis lokal yang didukung</p>
+        </div>
+        <div class="d-flex align-items-center" data-aos="fade-up" data-aos-delay="500">
+          <div class="icon-box me-3" style="width: 50px; height: 50px; background: #e0f7fa; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+            <i class="bi bi-people" style="font-size: 1.5rem; color: #1abc9c;"></i>
+          </div>
+          <p class="mb-0" style="color: #34495e;">+10.000 pembaca aktif setiap bulan</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center my-5 py-4" data-aos="fade-up">
+      <h3 class="fw-bold mb-4" style="color: #2c3e50;">Tim Kami</h3>
+      <p class="lead mx-auto" style="max-width: 700px; color: #7f8c8d;">
+        Litinova digerakkan oleh tim multidisplin yang bersemangat dalam menciptakan ekosistem literasi digital 
+        yang inklusif dan berkelanjutan.
+      </p>
+    </div>
+
+    <div class="row g-5">
+      <!-- Anggota Tim 1 -->
+      <div class="col-md-3" data-aos="fade-up" data-aos-delay="100">
+        <div class="team-card text-center p-4 h-100 border-0 shadow-sm rounded-3" style="background: white; transition: all 0.3s ease;">
+          <div class="team-img mx-auto mb-4" style="width: 120px; height: 120px; overflow: hidden; border-radius: 50%; border: 3px solid #f1f1f1;">
+            <img src="img/galuh1.jpg" alt="Galuh Satria" class="img-fluid w-100 h-100" style="object-fit: cover;">
+          </div>
+          <h5 class="fw-bold mb-2" style="color: #2c3e50;">Galuh Satria</h5>
+          <img src="img/coding.gif" class="w-25" alt="">
+          <p class="text-muted mb-3">Lead Developer</p>
+          
+          <div class="social-links">
+            <a href="#" class="text-decoration-none me-2" style="color: #3498db;"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="text-decoration-none me-2" style="color: #9b59b6;"><i class="bi bi-github"></i></a>
+            <a href="#" class="text-decoration-none" style="color: #1abc9c;"><i class="bi bi-twitter"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Anggota Tim 2 -->
+      <div class="col-md-3" data-aos="fade-up" data-aos-delay="200">
+        <div class="team-card text-center p-4 h-100 border-0 shadow-sm rounded-3" style="background: white; transition: all 0.3s ease;">
+          <div class="team-img mx-auto mb-4" style="width: 120px; height: 120px; overflow: hidden; border-radius: 50%; border: 3px solid #f1f1f1;">
+            <img src="img/Rara.jpg" alt="Rara Arfiani" class="img-fluid w-100 h-100" style="object-fit: cover;">
+          </div>
+          <h5 class="fw-bold mb-2" style="color: #2c3e50;">Rara Arfiani</h5>
+          <img src="img/sheet.gif" class="w-25" alt="">
+          <p class="text-muted mb-3">Content Manager</p>
+          
+          <div class="social-links">
+            <a href="#" class="text-decoration-none me-2" style="color: #3498db;"><i class="bi bi-linkedin"></i></a>
+            <a href="#" class="text-decoration-none me-2" style="color: #9b59b6;"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-decoration-none" style="color: #1abc9c;"><i class="bi bi-medium"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Anggota Tim 3 -->
+      <div class="col-md-3" data-aos="fade-up" data-aos-delay="300">
+        <div class="team-card text-center p-4 h-100 border-0 shadow-sm rounded-3" style="background: white; transition: all 0.3s ease;">
+          <div class="team-img mx-auto mb-4" style="width: 120px; height: 120px; overflow: hidden; border-radius: 50%; border: 3px solid #f1f1f1;">
+            <img src="img/Resky.jpg" alt="Resky Aditya" class="img-fluid w-100 h-100" style="object-fit: cover;">
+          </div>
+          <h5 class="fw-bold mb-2" style="color: #2c3e50;">Resky Aditya</h5>
+          <img src="img/poto.gif" class="w-25" alt="">
+          <p class="text-muted mb-3">Asset Specialist</p>
+          
+          <div class="social-links">
+            <a href="#" class="text-decoration-none me-2" style="color: #3498db;"><i class="bi bi-behance"></i></a>
+            <a href="#" class="text-decoration-none me-2" style="color: #9b59b6;"><i class="bi bi-dribbble"></i></a>
+            <a href="#" class="text-decoration-none" style="color: #1abc9c;"><i class="bi bi-pinterest"></i></a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Anggota Tim 4 -->
+      <div class="col-md-3" data-aos="fade-up" data-aos-delay="400">
+        <div class="team-card text-center p-4 h-100 border-0 shadow-sm rounded-3" style="background: white; transition: all 0.3s ease;">
+          <div class="team-img mx-auto mb-4" style="width: 120px; height: 120px; overflow: hidden; border-radius: 50%; border: 3px solid #f1f1f1;">
+            <img src="img/Risky.jpg" alt="Risky Syahputra" class="img-fluid w-100 h-100" style="object-fit: cover;">
+          </div>
+          <h5 class="fw-bold mb-2" style="color: #2c3e50;">Risky Syahputra</h5>
+          <img src="img/tidur.gif" class="w-25" alt="">
+          <p class="text-muted mb-3">Assistant Developer</p>
+          
+          <div class="social-links">
+            <a href="#" class="text-decoration-none me-2" style="color: #3498db;"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-decoration-none me-2" style="color: #9b59b6;"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="text-decoration-none" style="color: #1abc9c;"><i class="bi bi-globe"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="mission-box mt-5 p-5 rounded-4" data-aos="zoom-in" style="background: linear-gradient(135deg, #3498db 0%, #9b59b6 100%);">
+      <div class="row align-items-center">
+        <div class="col-lg-8">
+          <h3 class="text-white fw-bold mb-3">Misi Kami</h3>
+          <p class="text-white mb-4 mb-lg-0" style="opacity: 0.9;">
+            Litinova berkomitmen untuk menjadi jembatan antara kreativitas dan teknologi, 
+            menciptakan ekosistem yang mendukung penulis lokal sekaligus memenuhi kebutuhan 
+            pembaca akan akses literatur digital yang berkualitas.
+          </p>
+        </div>
+        <div class="col-lg-4 text-lg-end">
+          <a href="#" class="btn btn-light px-4 py-2 rounded-pill fw-bold" style="color: #3498db;">Bergabung dengan Kami</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Kontak -->
+<section id="Kontak" class="py-5" style="background: linear-gradient(135deg, #f8f9fa 0%, #ffffff 100%);">
+  <div class="container">
+    <div class="text-center mb-5" data-aos="fade-up" data-aos-duration="1000">
+      <h2 class="display-4 fw-bold mb-3" style="color: #2c3e50;">Hubungi Kami</h2>
+      <p class="lead mx-auto" style="max-width: 700px; color: #7f8c8d;">
+        Punya pertanyaan atau masukan? Tim Litinova siap membantu Anda.
+      </p>
+      <div class="divider mx-auto" style="width: 80px; height: 4px; background: linear-gradient(90deg, #3498db 0%, #9b59b6 100%);" data-aos="zoom-in" data-aos-delay="200"></div>
+    </div>
+    <div class="row g-8">
+      <!-- Contact Form -->
+      <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1200">
+        <div class="contact-form p-4 p-lg-5 shadow-sm rounded-3" style="background: white; height: 100%;">
+          <h4 class="fw-bold mb-4" style="color: #2c3e50;">Kirim Pesan</h4>
+          
+          <form>
+            <div class="mb-4" data-aos="fade-up" data-aos-delay="100">
+              <label for="name" class="form-label small text-uppercase fw-bold" style="color: #7f8c8d;">Nama Lengkap</label>
+              <input type="text" class="form-control p-3 rounded-3 border-1" id="name" placeholder="Nama Anda" style="border-color: #e0e0e0;">
+            </div>
+            
+            <div class="mb-4" data-aos="fade-up" data-aos-delay="200">
+              <label for="email" class="form-label small text-uppercase fw-bold" style="color: #7f8c8d;">Alamat Email</label>
+              <input type="email" class="form-control p-3 rounded-3 border-1" id="email" placeholder="email@contoh.com" style="border-color: #e0e0e0;">
+            </div>
+            
+            <div class="mb-4" data-aos="fade-up" data-aos-delay="300">
+              <label for="subject" class="form-label small text-uppercase fw-bold" style="color: #7f8c8d;">Subjek</label>
+              <select class="form-select p-3 rounded-3 border-1" id="subject" style="border-color: #e0e0e0;">
+                <option selected>Pilih subjek</option>
+                <option>Pertanyaan tentang buku</option>
+                <option>Kerjasama penulis</option>
+                <option>Masukan untuk platform</option>
+                <option>Lainnya</option>
+              </select>
+            </div>
+            
+            <div class="mb-4" data-aos="fade-up" data-aos-delay="400">
+              <label for="message" class="form-label small text-uppercase fw-bold" style="color: #7f8c8d;">Pesan Anda</label>
+              <textarea class="form-control p-3 rounded-3 border-1" id="message" rows="4" placeholder="Tulis pesan Anda di sini..." style="border-color: #e0e0e0;"></textarea>
+            </div>
+            
+            <button type="submit" class="btn btn-primary w-100 py-3 rounded-pill fw-bold border-0" style="background: linear-gradient(90deg, #3498db 0%, #9b59b6 100%);" data-aos="zoom-in" data-aos-delay="500">
+              Kirim Pesan
+              <i class="bi bi-send-fill ms-2"></i>
+            </button>
+          </form>
+        </div>
+      </div>
+
+      <!-- Contact Info -->
+      <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1200">
+        <div class="contact-info p-4 p-lg-5 h-100 rounded-3" style="background: linear-gradient(135deg, #3498db 0%, #9b59b6 100%); color: white;">
+          <h4 class="fw-bold mb-4">Info Kontak</h4>
+          <p class="mb-5" style="opacity: 0.9;">Tim dukungan kami siap membantu Anda dari Senin hingga Jumat, pukul 09.00 - 17.00 WIB.</p>
+          
+          <div class="d-flex align-items-start mb-4" data-aos="fade-up" data-aos-delay="100">
+            <div class="icon-box me-4" style="width: 50px; height: 50px; background: rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+              <i class="bi bi-geo-alt-fill" style="font-size: 1.25rem;"></i>
+            </div>
+            <div>
+              <h5 class="fw-bold mb-2">Lokasi</h5>
+              <p class="mb-0" style="opacity: 0.9;">Jl. Literasi Digital No. 123<br>Jakarta Selatan, Indonesia</p>
+            </div>
+          </div>
+          
+          <div class="d-flex align-items-start mb-4" data-aos="fade-up" data-aos-delay="200">
+            <div class="icon-box me-4" style="width: 50px; height: 50px; background: rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+              <i class="bi bi-envelope-fill" style="font-size: 1.25rem;"></i>
+            </div>
+            <div>
+              <h5 class="fw-bold mb-2">Email</h5>
+              <p class="mb-0" style="opacity: 0.9;">hello@litinova.id<br>support@litinova.id</p>
+            </div>
+          </div>
+          
+          <div class="d-flex align-items-start mb-4" data-aos="fade-up" data-aos-delay="300">
+            <div class="icon-box me-4" style="width: 50px; height: 50px; background: rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+              <i class="bi bi-telephone-fill" style="font-size: 1.25rem;"></i>
+            </div>
+            <div>
+              <h5 class="fw-bold mb-2">Telepon</h5>
+              <p class="mb-0" style="opacity: 0.9;">+62 21 1234 5678<br>+62 812 3456 7890</p>
+            </div>
+          </div>
+          
+          <div class="d-flex align-items-start" data-aos="fade-up" data-aos-delay="400">
+            <div class="icon-box me-4" style="width: 50px; height: 50px; background: rgba(255,255,255,0.2); border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+              <i class="bi bi-clock-fill" style="font-size: 1.25rem;"></i>
+            </div>
+            <div>
+              <h5 class="fw-bold mb-2">Jam Operasional</h5>
+              <p class="mb-0" style="opacity: 0.9;">Senin - Jumat: 09.00 - 17.00 WIB<br>Sabtu - Minggu: Tutup</p>
+            </div>
+          </div>
+          
+          <div class="social-links mt-5 pt-3" data-aos="fade-up" data-aos-delay="500">
+            <h5 class="fw-bold mb-3">Media Sosial</h5>
+            <a href="#" class="text-decoration-none me-3" style="color: white; font-size: 1.5rem;"><i class="bi bi-instagram"></i></a>
+            <a href="#" class="text-decoration-none me-3" style="color: white; font-size: 1.5rem;"><i class="bi bi-twitter"></i></a>
+            <a href="#" class="text-decoration-none me-3" style="color: white; font-size: 1.5rem;"><i class="bi bi-facebook"></i></a>
+            <a href="#" class="text-decoration-none" style="color: white; font-size: 1.5rem;"><i class="bi bi-linkedin"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+
+
+
+<!-- Footer -->
+<footer>
+  <p>&copy; 2025 Litinova. Dibuat dengan cinta untuk karya lokal. [Bang udah bang, Lead dev capek😥]</p>
+</footer>
+ 
+
+<!-- Bootstrap JS -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+<script>
+  AOS.init();
+</script>
+</body>
+</html>

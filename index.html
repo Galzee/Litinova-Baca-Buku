@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Litinova</title>
+    <meta name="description" content="Jual karya tulis, puisi, atau zine digital dengan sistem bayar suka-suka (pay-what-you-want) atau donasi.">
+    <link rel="icon" href="img/LogoLitinova.png" type="image/png">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            overflow: hidden;
+            color: white;
+            position: relative;
+        }
+
+        video {
+            width: 100%;
+            height: 100vh;
+            object-fit: cover;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: -1;
+            filter: brightness(50%);
+        }
+
+        .msk {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-top: 23%;
+            transform: translate(-50%, -50%);
+            text-align: center;
+            background-color: rgba(0, 0, 0, 0.4);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(10px);
+            animation: fadeIn 2s ease forwards;
+        }
+
+        .msk img {
+            width: 80px;
+            margin-bottom: 20px;
+            border-radius: 30%;
+            opacity: 0;
+            animation: fadeSlideIn 1s ease 0.5s forwards;
+        }
+
+        .msk h1 {
+            font-size: 3em;
+            margin-bottom: 10px;
+            letter-spacing: 1px;
+            opacity: 0;
+            animation: fadeSlideIn 1s ease 0.8s forwards;
+        }
+
+        .msk p {
+            font-size: 1.2em;
+            margin-bottom: 30px;
+            max-width: 500px;
+            margin-inline: auto;
+            opacity: 0;
+            animation: fadeSlideIn 1s ease 1.1s forwards;
+        }
+
+        .msk input {
+            padding: 12px;
+            background-color: #ffffff00;
+            border-left: white 5px solid;
+            border-right: 0px;
+            border-top: 0px;
+            border-bottom: 0px;
+            color: white;
+            font-size: 1em;
+            width: 80%;
+            max-width: 300px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+            outline: none;
+            opacity: 0;
+            animation: fadeSlideIn 1s ease 1.4s forwards;
+        }
+        .msk input::placeholder {
+            color: white;
+            opacity: 0.7;
+        }
+
+        .msk input:focus {
+            border-left: #007BFF 5px solid;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .msk input:hover{
+            transition: 0.5s;
+        }
+
+        .msk button {
+            padding: 12px 30px;
+            font-size: 1em;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            opacity: 0;
+            animation: fadeSlideIn 1s ease 1.7s forwards;
+        }
+
+        .msk button:hover {
+            background-color: #0056b3;
+        }
+
+        .error-message {
+            color: #ff6b6b;
+            margin-bottom: 15px;
+            font-size: 0.9em;
+            display: none;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translate(-50%, -40%);
+            }
+            to {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+        }
+
+        @keyframes fadeSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <video src="img/Vid1.mp4" autoplay loop muted></video>
+    <div class="msk">
+        <img src="img/LogoLitinova.png" alt="Litinova Logo">
+        <h1>Litinova</h1>
+        <p>Jual karya tulis, puisi, atau zine digital dengan sistem bayar suka-suka (pay-what-you-want) atau donasi.</p>
+        <div id="error-message" class="error-message">Username atau password tidak boleh kosong</div>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username"><br>
+            <input type="password" id="password" placeholder="Password"><br>
+            <button type="submit">Login</button>
+        </form>
+    </div>
+
+    <script>
+document.getElementById('loginForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
+    const errorMessage = document.getElementById('error-message');
+    
+    // Check if the credentials match the specified username and password
+    if(username === 'Atmin' && password === '8MAY') {
+        // Store login info in localStorage
+        localStorage.setItem('litinova_username', username);
+        localStorage.setItem('litinova_loggedIn', 'true');
+        
+        // Redirect to utama.html
+        window.location.href = 'utama.html';
+    } else {
+        // Display error message for incorrect credentials
+        errorMessage.textContent = 'Username atau password salah!';
+        errorMessage.style.display = 'block';
+    }
+});
+    </script>
+</body>
+</html>
